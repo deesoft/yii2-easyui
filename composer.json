@@ -1,0 +1,30 @@
+{
+	"name": "deesoft/yii2-easyui",
+	"description": "jQuery easyui plugin for Yii2",
+	"keywords": ["yii2", "jquery", "easyui"],
+	"type": "yii2-extension",
+	"license": "BSD-3-Clause",
+	"support": {
+		"issues": "https://github.com/deesoft/yii2-easyui/issues",
+		"source": "https://github.com/deesoft/yii2-easyui"
+	},
+	"authors": [
+		{
+			"name": "Misbahul Munir",
+			"email": "misbahuldmunir@gmail.com"
+		}
+	],
+	"require": {
+		"yiisoft/yii2": "~2.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"dee\\easyui\\": ""
+		}
+	},
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
