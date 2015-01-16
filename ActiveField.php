@@ -1,6 +1,6 @@
 <?php
 
-namespace mdm\easyui;
+namespace dee\easyui;
 
 /**
  * ActiveField

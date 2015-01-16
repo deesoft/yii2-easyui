@@ -1,6 +1,8 @@
 <?php
 
-namespace mdm\easyui;
+namespace dee\easyui;
+
+use yii\helpers\Json;
 
 /**
  * ActiveForm
@@ -10,11 +12,36 @@ namespace mdm\easyui;
  */
 class ActiveForm extends \yii\widgets\ActiveForm
 {
+    /**
+     * @inheritdoc
+     */
+    public $fieldClass = 'yii\widgets\ActiveField';
 
+    /**
+     * 
+     * @var array 
+     */
+    public $clientOptions = [];
+
+    /**
+     * @inheritdoc
+     */
+    protected function getClientOptions()
+    {
+        return $this->clientOptions;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function run()
     {
         if ($this->enableClientScript) {
-            // my own lines
+            $view = $this->getView();
+            EasyuiAsset::register($view);
+            $id = $this->options['id'];
+            $options = Json::encode($this->getClientOptions());
+            $view->registerJs("jQuery('#$id').form($options);");
         }
         $this->enableClientScript = false;
         parent::run();
