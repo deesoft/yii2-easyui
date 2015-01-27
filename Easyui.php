@@ -5,6 +5,7 @@ namespace dee\easyui;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 /**
  * Easyui

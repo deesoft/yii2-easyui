@@ -27,17 +27,8 @@ class DataGrid extends Widget
     {
         $view = $this->getView();
         $this->registerWidget('datagrid');
-        $jsFiles = [];
         if ($this->enableFilter) {
-            $jsFiles[] = '/datagrid-filter.js';
-        }
-        if (count($jsFiles)) {
-            list(, $baseUrl) = $view->getAssetManager()->publish('@dee/easyui/assets');
-            foreach ($jsFiles as $js) {
-                $view->registerJsFile($baseUrl . $js, ['depends' => 'dee\easyui\EasyuiAsset']);
-            }
-        }
-        if ($this->enableFilter) {
+            DataGridAsset::register($view);
             $view->registerJs("jQuery('#{$this->options['id']}').datagrid('enableFilter');");
         }
         echo Html::tag('table', '', $this->options);
@@ -49,11 +40,7 @@ class DataGrid extends Widget
     protected function getClientOptions()
     {
         $this->normalizeColumns();
-        $this->clientOptions['url'] = Url::to($this->url);
-        return array_merge([
-            'method'=>'get',
-            
-        ], $this->clientOptions);
+        return $this->clientOptions;
     }
 
     /**

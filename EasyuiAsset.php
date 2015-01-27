@@ -30,6 +30,7 @@ class EasyuiAsset extends \yii\web\AssetBundle
      */
     public $js = [
         'jquery.easyui.min.js',
+        'dee.easyui.js',
     ];
 
     /**
