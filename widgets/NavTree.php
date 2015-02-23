@@ -1,6 +1,6 @@
 <?php
 
-namespace dee\easyui;
+namespace dee\easyui\widgets;
 
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;

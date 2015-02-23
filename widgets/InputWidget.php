@@ -1,7 +1,7 @@
 <?php
 
 
-namespace dee\easyui;
+namespace dee\easyui\widgets;
 
 use yii\base\Model;
 use yii\base\InvalidConfigException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace dee\easyui;
+namespace dee\easyui\widgets;
 
 use Yii;
 use yii\helpers\Url;
@@ -11,14 +11,34 @@ use yii\helpers\ArrayHelper;
 /**
  * DataGrid
  *
+ * @property array|string $url
+ * 
  * @author Misbahul D Munir <misbahuldmunir@gmail.com>
  * @since 1.0
  */
 class DataGrid extends Widget
 {
+    /**
+     * @var array 
+     */
     public $columns = [];
-    public $url = ['source'];
     public $enableFilter = true;
+
+    /**
+     * @inheritdoc
+     */
+    protected $properties = [
+        'url'
+    ];
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+        $this->normalizeColumns();
+    }
 
     /**
      * @inheritdoc
@@ -26,21 +46,13 @@ class DataGrid extends Widget
     public function run()
     {
         $view = $this->getView();
+        $this->normalizeColumns();
         $this->registerWidget('datagrid');
         if ($this->enableFilter) {
             DataGridAsset::register($view);
             $view->registerJs("jQuery('#{$this->options['id']}').datagrid('enableFilter');");
         }
         echo Html::tag('table', '', $this->options);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function getClientOptions()
-    {
-        $this->normalizeColumns();
-        return $this->clientOptions;
     }
 
     /**
@@ -69,8 +81,8 @@ class DataGrid extends Widget
                 $columns[] = $column;
             }
         }
-        $this->clientOptions['columns'] = $columns;
-        $this->clientOptions['frozenColumns'] = $frozenColumns;
+        $this->clientOptions['columns'] = [$columns];
+        $this->clientOptions['frozenColumns'] = [$frozenColumns];
         if ($this->enableFilter) {
             $this->clientOptions['filterRules'] = $filters;
         }

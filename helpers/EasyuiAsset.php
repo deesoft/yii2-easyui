@@ -1,6 +1,6 @@
 <?php
 
-namespace dee\easyui;
+namespace dee\easyui\helpers;
 
 use Yii;
 

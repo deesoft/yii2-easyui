@@ -1,6 +1,6 @@
 <?php
 
-namespace dee\easyui;
+namespace dee\easyui\widgets;
 
 /**
  * DataGridAsset
@@ -26,7 +26,7 @@ class DataGridAsset extends \yii\web\AssetBundle
      * @inheritdoc
      */
     public $depends = [
-        'dee\easyui\EasyuiAsset',
+        'dee\easyui\widgets\EasyuiAsset',
     ];
 
 }

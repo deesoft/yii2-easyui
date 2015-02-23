@@ -23,6 +23,7 @@
 		}
 	},
     "extra": {
+        "bootstrap":"dee\\easyui\\Bootstrap",
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
